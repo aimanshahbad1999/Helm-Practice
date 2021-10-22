@@ -1,0 +1,6 @@
+
+replicaCount: 5
+
+metadata:
+  name: deploy
+

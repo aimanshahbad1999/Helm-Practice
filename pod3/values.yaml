@@ -1,0 +1,8 @@
+metadata:
+  name: testpod1
+
+container_name: c00
+
+container_image: httpd
+
+container_port: 80

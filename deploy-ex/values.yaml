@@ -1,0 +1,22 @@
+name: mydeploy1
+
+replica: "true"
+
+replicaCount: 3
+
+label: deployment
+
+podName: testpod1
+
+port: 80
+
+serviceName: demoservice1
+
+serviceType: ClusterIP
+
+containerInfo:
+  containerName: c00
+  imageName: httpd
+  port: 80
+
+  
