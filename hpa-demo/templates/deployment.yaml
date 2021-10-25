@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: {{ .Values.deploy_name}}
+spec:
+   replicas: {{ .Values.replicaCount}}
+   selector:      
+    matchLabels:
+     name: {{ .Values.label}}
+   template:
+     metadata:
+       name: {{ .Values.podName}}
+       labels:
+         name: {{ .Values.label}}
+     spec:
+      containers:
+        - name: c01
+          image: {{ .Values.imageName}}
+          ports:
+            - containerPort: {{ .Values.port}}
+          resources:
+            requests:
+              cpu: {{ .Values.req_cpu}}
+            limits:
+              cpu: {{ .Values.limit_cpu}}

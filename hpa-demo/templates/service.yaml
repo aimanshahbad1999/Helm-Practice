@@ -1,0 +1,11 @@
+kind: Service                             
+apiVersion: v1
+metadata:
+  name: hpa-service
+spec:
+  ports:
+    - port: {{ .Values.port}}                               
+      targetPort: {{ .Values.port}}                    
+  selector:
+    name: {{ .Values.label}}                   
+  type: ClusterIP    

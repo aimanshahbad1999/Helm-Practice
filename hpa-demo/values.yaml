@@ -1,0 +1,28 @@
+
+deploy_name: hpa-demo
+
+replicaCount: 1
+
+label: hpa-nginx
+
+podName: hpa-pod
+
+containerName: c01
+
+imageName: nginx
+
+port: 80
+
+req_cpu: 500m
+
+limit_cpu: 1000m
+
+#  HPA
+
+hpa_name: hpa-demo
+
+minReplicas: 1
+
+maxReplicas: 10
+
+CPU_Utilization: 50
