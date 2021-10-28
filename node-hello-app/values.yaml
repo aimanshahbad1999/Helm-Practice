@@ -1,0 +1,37 @@
+# Deployment
+
+deployment:
+  name: node-app-deploy
+  label: node-app
+  replica: 1
+
+containers:
+  name: node-app-con
+  image: aimanshah/node-hello-app
+  port: 3000
+
+
+# HPA
+
+hpa:
+  name: node-app-hpa
+  minReplicas: 1
+  maxReplicas: 10
+  targetAverageUtilization: 50
+
+#service
+
+service:
+  name: node-app-service
+  label: node-app-svc
+  type: ClusterIP
+  port: 3000
+  targetPort: 3000
+
+  #ingress
+
+ingress:
+  name: node-app-ingress
+  host: nodeapp.com
+  serviceName: node-app-service
+  port: 3000
