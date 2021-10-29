@@ -1,0 +1,60 @@
+#Deployment-mongodb
+
+mongodb:
+  name: mongo-db-deployment
+  label: mongodb
+  reaplicaCount: 1
+  containerName: mongodb
+  image: mongo
+  containerPort: 27017
+  secret: mongodb-secret
+  username: mongo-root-username
+  password: mongo-root-password
+
+
+#Deployment-mongoexpress
+
+mongoexpress:
+  name: mongo-express-deployment
+  label: mongo-express
+  replicaCount: 1
+  containerName: mongoexpress
+  image: mongo-express
+  containerPort: 8081
+
+#configMap
+configMap:
+  name: mongo-db-config-map
+  databaseUrl: mongodb-dervice
+
+
+#service
+mongoexpress-service:
+  name: mongo-express-service
+  label: mongo-express-service
+  type: LoadBalancer
+  port: 8081
+  targetPort: 8081
+  protocol: TCP
+  nodePort: 30000
+
+mongodb-service:
+  name: mongodb-service
+  label: mongodb-service
+  port: 27017
+  targetPort: 27017
+  protocol: TCP
+  selector: mongodb
+
+#ingres
+ingress:
+  name: mongo-express-ingress
+  host: mongo-express-dashboard.com
+  serviceName: mongo-express-service
+  
+
+
+  
+
+
+    
